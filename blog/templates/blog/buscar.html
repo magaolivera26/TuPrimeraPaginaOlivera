@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+
+{% if resultado %}
+    {% for cliente in resultado %}
+        <p>{{ cliente.nombre }} - {{ cliente.email }}</p>
+    {% endfor %}
+{% endif %}
+{% endblock %}
