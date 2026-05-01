@@ -14,6 +14,7 @@ class ProductoForm(forms.Form):
 class PedidoForm(forms.Form):
     cliente = forms.CharField()
     producto = forms.CharField()
+    cantidad = forms.IntegerField()
 
 
 class BuscarClienteForm(forms.Form):

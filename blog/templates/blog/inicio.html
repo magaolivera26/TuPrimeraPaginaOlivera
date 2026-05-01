@@ -1,6 +1,11 @@
 {% extends 'blog/base.html' %}
 
 {% block contenido %}
-<a href="/cliente/">Cargar Cliente</a><br>
-<a href="/buscar/">Buscar Cliente</a>
+<a href="{% url 'cliente' %}">Cargar Cliente</a>
+<a href="{% url 'buscar' %}">Buscar Cliente</a>
+<a href="{% url 'producto' %}">Cargar Producto</a>
+<a href="{% url 'pedido' %}">Cargar Pedido</a>
+<a href="{% url 'lista_clientes' %}">Ver Clientes</a>
+<a href="{% url 'lista_productos' %}">Ver Productos</a>
+<a href="{% url 'lista_pedidos' %}">Ver Pedidos</a>
 {% endblock %}

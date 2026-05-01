@@ -20,8 +20,9 @@ class Producto(models.Model):
 class Pedido(models.Model):
     cliente = models.CharField(max_length=50)
     producto = models.CharField(max_length=50)
+    cantidad = models.IntegerField()
 
     def __str__(self):
-        return f"{self.cliente} - {self.producto}"
+        return f"{self.cliente} - {self.producto} (x{self.cantidad})"
 
 

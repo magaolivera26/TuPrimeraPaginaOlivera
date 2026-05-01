@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+
+<h2>Lista de Pedidos</h2>
+
+<ul>
+    {% for pedido in pedidos %}
+        <li>{{ pedido.cliente }} - {{ pedido.producto }} (x{{ pedido.cantidad }})</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
