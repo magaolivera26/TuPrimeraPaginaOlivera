@@ -56,7 +56,7 @@ def producto(request):
 
     return render(request, "blog/producto.html", {"form": form})
 
-from .models import Pedido
+from .models import Pedido, Post
 from .forms import PedidoForm
 
 def pedido(request):
@@ -91,3 +91,80 @@ def lista_productos(request):
 def lista_pedidos(request):
     pedidos = Pedido.objects.all()
     return render(request, "blog/lista_pedidos.html", {"pedidos": pedidos})
+
+def pages(request):
+
+    posts = Post.objects.all()
+
+    return render(request, "blog/pages.html", {
+        "posts": posts
+    })
+
+
+def detalle_post(request, id):
+
+    post = Post.objects.get(id=id)
+
+    return render(request, "blog/detalle_post.html", {
+        "post": post
+    })
+
+from django.urls import reverse_lazy
+
+from django.views.generic import CreateView
+from django.views.generic import UpdateView
+from django.views.generic import DeleteView
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from .models import Post
+
+
+class CrearPost(LoginRequiredMixin, CreateView):
+
+    model = Post
+
+    template_name = 'blog/crear_post.html'
+
+    fields = [
+        'titulo',
+        'subtitulo',
+        'contenido',
+        'imagen',
+        'fecha',
+    ]
+
+    success_url = reverse_lazy('pages')
+
+
+    def form_valid(self, form):
+
+        form.instance.autor = self.request.user
+
+        return super().form_valid(form)
+
+
+class EditarPost(LoginRequiredMixin, UpdateView):
+
+    model = Post
+
+    template_name = 'blog/editar_post.html'
+
+    fields = [
+        'titulo',
+        'subtitulo',
+        'contenido',
+        'imagen',
+        'fecha',
+    ]
+
+    success_url = reverse_lazy('pages')
+
+
+class BorrarPost(LoginRequiredMixin, DeleteView):
+
+    model = Post
+
+    template_name = 'blog/borrar_post.html'
+
+    success_url = reverse_lazy('pages')

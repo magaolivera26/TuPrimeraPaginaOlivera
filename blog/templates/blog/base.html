@@ -1,14 +1,122 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Mi Web</title>
-</head>
-<body>
-    <h1>Mi primera web en Django</h1>
-    <hr>
+<html lang="es">
 
-    {% block contenido %}
-    {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>Vivero Online</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            margin:0;
+            background-color:#f4f9f4;
+        }
+
+        nav{
+            background-color:#2e7d32;
+            padding:15px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-right:20px;
+            font-weight:bold;
+        }
+
+        .banner{
+            background-image:url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735');
+            background-size:cover;
+            background-position:center;
+            height:300px;
+            color:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:50px;
+            font-weight:bold;
+        }
+
+        .contenido{
+            padding:30px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            margin-bottom:20px;
+            border-radius:10px;
+            box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        img{
+            border-radius:10px;
+        }
+
+        .boton{
+            background-color:#2e7d32;
+            color:white;
+            padding:10px 15px;
+            text-decoration:none;
+            border-radius:5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+    <a href="/">Inicio</a>
+
+    <a href="/pages/">Plantas y Flores</a>
+
+    <a href="/cliente/">Clientes</a>
+
+    <a href="/productos/">Productos</a>
+
+    <a href="/pedidos/">Pedidos</a>
+
+    <a href="/admin/">Admin</a>
+
+    {% if user.is_authenticated %}
+
+        <span style="color:white;">
+            Hola {{ user.username }}
+        </span>
+
+        <a href="/accounts/logout/">
+            Logout
+        </a>
+
+    {% else %}
+
+        <a href="/accounts/login/">
+            Login
+        </a>
+
+        <a href="/accounts/register/">
+            Registro
+        </a>
+
+    {% endif %}
+
+</nav>
+
+    <div class="banner">
+        🌿 Vivero Online
+    </div>
+
+    <div class="contenido">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
 
 </body>
+
 </html>

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>Borrar publicación 🗑️</h1>
+
+<p>
+¿Seguro que querés borrar "{{ object }}"?
+</p>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Sí, borrar
+    </button>
+
+</form>
+
+{% endblock %}
