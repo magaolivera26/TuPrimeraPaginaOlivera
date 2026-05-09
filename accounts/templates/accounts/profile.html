@@ -1,0 +1,10 @@
+<h1>Mi Perfil</h1>
+
+<p><strong>Usuario:</strong> {{ profile.user.username }}</p>
+<p><strong>Email:</strong> {{ profile.user.email }}</p>
+
+{% if profile.avatar %}
+    <img src="{{ profile.avatar.url }}" width="150" style="border-radius:10px;">
+{% else %}
+    <p>No tiene avatar</p>
+{% endif %}

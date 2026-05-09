@@ -168,3 +168,8 @@ class BorrarPost(LoginRequiredMixin, DeleteView):
     template_name = 'blog/borrar_post.html'
 
     success_url = reverse_lazy('pages')
+
+    from django.shortcuts import render
+
+def about(request):
+    return render(request, "blog/about.html")

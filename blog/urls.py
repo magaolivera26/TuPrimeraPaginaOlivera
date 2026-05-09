@@ -10,7 +10,7 @@ from .views import (
     lista_pedidos,
     pages,
     detalle_post,
-
+    about,
     CrearPost,
     EditarPost,
     BorrarPost,
@@ -34,4 +34,5 @@ urlpatterns = [
     path('editar-post/<int:pk>/', EditarPost.as_view(), name='editar_post'),
 
     path('borrar-post/<int:pk>/', BorrarPost.as_view(), name='borrar_post'),
+    path('about/', about, name='about'),
 ]
